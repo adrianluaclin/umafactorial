@@ -1,0 +1,244 @@
+git config --global user.name "adrian"
+
+git config --global user.email "adrianluaclin@uma.es"
+
+Estos dos comandos sirven para que git pueda realizar commits,el correo
+no es necesario que sea real.
+Fueron ejecutados en la introducción.
+---------------------------------
+
+git clone https://github.com/adrianluaclin/umafactorial.git
+
+Se crea un repositorio con la cuenta de GitHub y con este comando se copia al ordenador.Ejecutado en el ítem 1.
+---------------------------------
+
+cd umafactorial
+
+Con este se accede al directorio de la copia del repositorio para poder trabajar.
+---------------------------------
+touch factorial.java
+
+Se crea un archivo vacio que después habrá que copiarle el código
+que se indique.Ejecutado en el ítem 2
+---------------------------------
+
+git add factorial.java
+
+Se añade el archivo al stage index , en donde espera confirmación.
+
+git commit –m “implementacion inicial”
+
+Con este se confirma que el archivo añadido se envíe al repositorio,
+agregando un comentario indicando de qué trata el código.
+Ejecutados en el ítem 3.
+---------------------------------
+Antes de ejecutar la instrucción de a continuación ,primero se modifica
+el archivo "factorial.java" copiando el código que se indique.
+
+git add factorial.java
+
+Se añade el archivo modificado.
+
+git commit –m “refactorizacion”
+
+Se confirma para enviar al repositorio agregando el comentario correspondiente.
+
+Ejecutados en el ítem 4.
+---------------------------------
+
+git push origin master
+
+Con este se envían los cambios en la rama master al repositorio de GitHub.
+
+git checkout –b recursivo
+
+Se decide realizar un cambio,entonces para que no afecte al código original, con este comando se crea una nueva rama llamada recursivo donde se cambia el espacio de trabajo.
+Ejecutados en el ítem 5.
+---------------------------------
+
+De nuevo , se tiene que modificar el fichero "factorial.java" añadiendo
+el código que se pida.Esta modificación corresponde con la rama recursivo.
+Corresponde con el ítem 6.
+---------------------------------
+git add factorial.java
+
+Se añade.
+
+git commit –m “implementacion recursiva”
+
+Se confirma para enviar al repositorio con su comentario.
+
+git push origin recursivo
+
+Los cambios de la rama recursivo se envían al repositorio de GitHub.
+Ejecutados en el ítem 7.
+---------------------------------
+git checkout master
+
+Con este se cambia a la rama master para poder modificar el código,
+ya que se encontraron problemas y no se puede esperar a que la rama recursivo acabe.
+Ejecutado en el ítem 8.
+---------------------------------
+
+Se modifica el código para arreglar el problema.
+Corresponde con el ítem 9.
+---------------------------------
+git add factorial.java
+
+Se añade el archivo.
+
+git commit –m “correccion numeros negativos”
+
+Se confirma para enviar al repositorio con su comentario.
+
+git push origin master
+
+Se envían los cambios de la rama a GitHub.
+Ejecutados en el ítem 10.
+---------------------------------
+
+git checkout recursivo
+
+Una vez arreglado el problema anterior , se pide que se optimice el archivo de la rama recursivo, por tanto con este comando se cambia a él y
+se realiza la modificación.
+
+git add factorial.java
+
+Se añade ya modificado.
+
+git commit –m “optimizacion”
+
+Se confirma para enviar.
+Ejecutados en el ítem 11.
+---------------------------------
+
+git checkout master
+
+Se cambia a la rama master para ,ahora,trabajar en ella.
+
+git merge recursivo
+
+Con este se mezclan los cambios de la rama recursivo con la rama master.
+Aquí no se producen conflictos que git no sea capaz de resolver, por tanto la mezcla se hace automática y no requiere asistencia humana.
+Ejecutados en el ítem 12.
+---------------------------------
+
+git checkout -b refacIO
+
+Se quieren hacer más cambios, por tanto con este comando creamos otra rama
+nueva llamada refacIO y nos colocamos en ella.
+Se modifica el programa con el código indicado.
+Ejecutado en el ítem 13.
+---------------------------------
+
+git add factorial.java 
+
+Se añade el archivo modificado.
+
+git commit –m “refactorizacion metodo de entrada”
+
+Se confirma para enviar con su respectivo comentario.
+Tras esta instrucción se vuelve a modificar el código para que 
+se refactorice la salida.
+Ejecutados en el ítem 14.
+---------------------------------
+
+git stash
+
+Antes de realizar el commit para el archivo anterior , se tiene que arreglar unos errores en la rama master, por tanto no se puede terminar el trabajo de refactorización de la rama refacIO.Para no perder lo que se ha hecho con este comando se guarda.
+
+git checkout master
+
+Se cambia a la rama master para poder arreglar los errores añadiendo el código correspondiente al archivo.
+Ejecutados en el ítem 15.
+
+---------------------------------
+
+git add factorial.java
+
+Se añaden los cambios.
+
+git commit –m “cambio de long a BigInteger”
+
+Se confirma para enviar al repositorio.
+
+git push origin master
+
+Se envía los cambios de la rama master a HitHub.
+
+git checkout refacIO
+
+Una vez hecho lo anterior, se cambia a la rama refacIO para recuperar los cambios guardados anteriormente.
+
+git stash pop
+
+Con este se recuperan los cambios realizados.
+
+git add factorial.java
+
+Se añaden los cambios.
+
+git commit –m “refactorizacion metodo de salida”
+
+Se confirma para enviar los cambios de la rama refacIO al repositorio.
+Ejecutados en el ítem 16.
+
+---------------------------------
+
+git checkout master
+
+Se quieren integrar los cambios en la rama master, por tanto cambiamos a ella.
+
+git merge refacIO
+
+Se mezcla los cambios de la rama refacIO con la rama master.Al contrario que el merge que se realizó anteriormente, aquí si da conflictos ,por lo que aparece un mensaje así: 
+
+Auto-merging factorial.java
+CONFLICT (content): Merge conflict in factorial.java
+Automatic merge failed; fix conflicts and then commit the result.
+
+Ejecutados en el ítem 17.
+
+---------------------------------
+
+Para resolver el problema anterior hay que ir al archivo o archivos donde se produzca el conflicto, en él o ellos aparecerá algo así:
+
+<<<<<<< HEAD
+ … contenido originario de la rama de destino (en la que se está realizando la mezcla) …
+=======
+… contenido originario de la rama de origen (desde la que se está realizando la mezcla) …
+>>>>>>> nombre_de_la_rama_de_origen
+
+Una vez en ellos, simplemente hay que modificar en el archivo donde haya problema.
+
+Corresponde al ítem 18.
+
+---------------------------------
+
+git add factorial.java 
+
+Se añade el archivo con los cambios.
+
+git commit –m “mezcla de rama refacIO”
+
+Se confirma para enviar la mezcla al repositorio.
+
+git push origin master
+
+Se envía los cambios de la rama master a GitHub.
+
+Ejecutados en el ítem 19.
+
+---------------------------------
+
+git push --all origin 
+
+Finalmente,para sincronizar todas la ramas en el repositorio
+se utiliza este comando.
+
+gitk --all
+
+Se comprueba la interfaz gráfica.
+
+Ejecutados en el ítem 22.
+
